@@ -1,0 +1,18 @@
+module test_bnch64bit;
+wire [15:0]sum;
+wire cout;
+reg [15:0]a,b;
+reg cin;
+CSA64bit uut(.sum(sum),.cout(cout),.a(a),.b(b),.cin(cin));
+initial
+begin
+    a=0;b=0;cin=0;
+    #10 cin=1;
+    #10 a=16'hFFFF;b=64'hFFFF;
+    #10 cin=0;
+    #10 a=16'h5;b=16'h5;
+    #10 cin=1;
+    #10 a=16'h32;b=16'h77;
+    #20 $finish;
+end
+endmodule
