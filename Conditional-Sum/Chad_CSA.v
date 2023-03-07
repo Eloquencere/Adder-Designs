@@ -1,8 +1,8 @@
-module Mux(In1, In2, Sel, Out);
-input In1, In2, Sel;
+module Mux(In0, In1, Sel, Out);
+input In0, In1, Sel;
 output Out;
 
-assign Out = Sel?In2:In1;
+assign Out = Sel?In1:In0;
 endmodule
 
 
@@ -53,6 +53,6 @@ RepBlock b1 [size-2:0](.A({A[size-1:1]}), .B({B[size-1:1]}),
                     .pCarry0({Carry0[size-2:0]}), .pCarry1({Carry1[size-2:0]}),
                     .nCarry0(Carry0[size-1:1]), .nCarry1(Carry1[size-1:1]));
 
-Mux b2 [size-1:0](.In1(Sum0), .In2(Sum1), .Sel({size-1{Cin}}), .Out(Sum));
-Mux CarryOut (.In1(Carry0[size-1]), .In2(Carry1[size-1]), .Sel(Cin), .Out(Cout)); // Static
+Mux b2 [size-1:0](.In0(Sum0), .In1(Sum1), .Sel({size{Cin}}), .Out(Sum));
+Mux CarryOut (.In0(Carry0[size-1]), .In1(Carry1[size-1]), .Sel(Cin), .Out(Cout)); // Static
 endmodule
