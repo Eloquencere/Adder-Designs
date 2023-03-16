@@ -1,6 +1,7 @@
 # Adder Topologies
 
 - [x] Ripple Carry Adder
+- [ ] Transmission function Adder
 - [x] Carry Increment Adder
 - [x] Carry Skip Adder
 - [x] Carry Select Adder
@@ -9,6 +10,8 @@
 - [ ] Ling Adder
 - [x] Manchester Carry Chain Adder
 - [x] Conditional Sum Adder
+- [ ] Current Mode Adder
+- [ ] ELM Adder
 - [ ] Sklansky Adder
 - [ ] Kogge-Stone Adder
 - [ ] Brent-Kung Adder
