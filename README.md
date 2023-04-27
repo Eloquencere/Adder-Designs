@@ -1,15 +1,15 @@
 # Adder Topologies
 
-- [x] Ripple Carry Adder
+- [x] Manchester Carry Chain Adder
 - [ ] Transmission function Adder
+- [x] Ripple Carry Adder
 - [x] Carry Increment Adder
 - [x] Carry Skip Adder
-- [x] Carry Select Adder
 - [ ] Carry Save Adder
+- [x] Carry Select Adder
+- [x] Conditional Sum Adder
 - [x] Carry Look Ahead Adder
 - [ ] Ling Adder
-- [x] Manchester Carry Chain Adder
-- [x] Conditional Sum Adder
 - [ ] ELM Adder
 - [ ] Sklansky Adder
 - [ ] Kogge-Stone Adder
