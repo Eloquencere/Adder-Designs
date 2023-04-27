@@ -10,7 +10,6 @@
 - [ ] Ling Adder
 - [x] Manchester Carry Chain Adder
 - [x] Conditional Sum Adder
-- [ ] Current Mode Adder
 - [ ] ELM Adder
 - [ ] Sklansky Adder
 - [ ] Kogge-Stone Adder
