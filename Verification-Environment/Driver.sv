@@ -15,7 +15,7 @@ class driver;
             packet pkt_from_generator;
             driver_mailbox.get(pkt_from_generator);
             #5;
-            driver_interface.a <= pkt_from_generator.a; // any other better way of assigning?
+            driver_interface.a <= pkt_from_generator.a;
             driver_interface.b <= pkt_from_generator.b;
             driver_interface.cin <= pkt_from_generator.cin;
             
