@@ -16,7 +16,7 @@ class scoreboard;
             
             $display("Scoreboard Received, packet no. %d", packets_evaluated);
             
-            if((pkt_from_monitor.sum) + (pkt_from_monitor.cout) == actual_sum)
+            if({(pkt_from_monitor.cout), (pkt_from_monitor.sum)} == actual_sum)
                 $display("The sum is correct");
             else
                 $display("DUT is not working, expected sum = %d", actual_sum);
