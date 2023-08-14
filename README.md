@@ -18,3 +18,8 @@
 - [ ] Floating Point Adder
 - [ ] Pipelined Adder
 - [x] Make a SV testbench to test new adders
+
+# Test Bench Features To Add
+- Choose to have a clock or not
+- Specify the DUT delay (in clk cycles or in time units)
+- Checks for coverage
