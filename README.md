@@ -19,7 +19,10 @@
 - [ ] Pipelined Adder
 - [x] Make a SV testbench to test new adders
 
-# Test Bench Features To Add
+# To Add
+## Codes
+- Make the outputs of my codes more uniform by merging the carry out bit with the sum at the top module
+## Testbench
 - Choose to have a clock or not
 - Specify the DUT delay (in clk cycles or in time units)
 - Checks for coverage
