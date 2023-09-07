@@ -91,20 +91,3 @@ assign sum0={msum0,adsum0[0+:8]};
 assign sum1={msum1,adsum1[0+:8]};
 assign sum=cin?sum1:sum0;
 endmodule
-
-module test_bnch;
-wire [16:0]sum;
-reg [15:0]a,b;
-reg cin;
-adderblock16bit uut(.sum(sum),.a(a),.b(b),.cin(cin));
-initial
-begin
-    a=0;b=0;cin=0;
-    #10 cin=1;
-    #10 a=16'hCD;b=16'hFC;
-    #10 cin=0;
-    #10 a=16'h33;b=16'h77; 
-    #10 cin=1;
-    #20 $finish;
-end
-endmodule
