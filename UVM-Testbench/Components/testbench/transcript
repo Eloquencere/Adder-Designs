@@ -1,0 +1,124 @@
+# vsim -c -do "run -all;exit" top 
+# Start time: 08:11:57 on Sep 11,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# //  Questa Sim-64
+# //  Version 2021.1 win64 Jan 19 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.adder_interface(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.adder_pkg(fast)
+# Loading work.top_sv_unit(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.top(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# run -all
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test adder_test...
+# UVM_INFO ../testbench/adder_test.sv(21) @ 0: uvm_test_top [adder_test] Started build_phase
+# UVM_INFO ../testbench/adder_test.sv(26) @ 0: uvm_test_top [adder_test] Finished build_phase
+# UVM_INFO ../environment/adder_environment.sv(19) @ 0: uvm_test_top.envrnmnt [adder_environment] Started build_phase
+# UVM_INFO ../environment/adder_environment.sv(24) @ 0: uvm_test_top.envrnmnt [adder_environment] Finished build_phase
+# UVM_INFO ../agent/adder_agent.sv(21) @ 0: uvm_test_top.envrnmnt.agnt [adder_agent] Started build_phase
+# UVM_INFO ../agent/adder_agent.sv(28) @ 0: uvm_test_top.envrnmnt.agnt [adder_agent] Finished build_phase
+# UVM_INFO ../agent/adder_driver.sv(20) @ 0: uvm_test_top.envrnmnt.agnt.drvr [adder_driver] Started build_phase
+# UVM_INFO ../agent/adder_driver.sv(25) @ 0: uvm_test_top.envrnmnt.agnt.drvr [adder_driver] Finished build_phase
+# UVM_INFO ../agent/adder_monitor.sv(21) @ 0: uvm_test_top.envrnmnt.agnt.mntr [adder_monitor] Started build_phase
+# UVM_INFO ../agent/adder_monitor.sv(27) @ 0: uvm_test_top.envrnmnt.agnt.mntr [adder_monitor] Finished build_phase
+# UVM_INFO ../environment/adder_scoreboard.sv(22) @ 0: uvm_test_top.envrnmnt.scrbrd [adder_scoreboard] Started build_phase
+# UVM_INFO ../environment/adder_scoreboard.sv(26) @ 0: uvm_test_top.envrnmnt.scrbrd [adder_scoreboard] Finished build_phase
+# UVM_INFO ../agent/adder_agent.sv(32) @ 0: uvm_test_top.envrnmnt.agnt [adder_agent] Started connect_phase
+# UVM_INFO ../agent/adder_agent.sv(37) @ 0: uvm_test_top.envrnmnt.agnt [adder_agent] Started finished_phase
+# UVM_INFO ../environment/adder_environment.sv(28) @ 0: uvm_test_top.envrnmnt [adder_environment] Started connect_phase
+# UVM_INFO ../environment/adder_environment.sv(32) @ 0: uvm_test_top.envrnmnt [adder_environment] Finished connect_phase
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------
+# Name                       Type                    Size  Value
+# --------------------------------------------------------------
+# uvm_test_top               adder_test              -     @471 
+#   envrnmnt                 adder_environment       -     @478 
+#     agnt                   adder_agent             -     @489 
+#       drvr                 adder_driver            -     @612 
+#         rsp_port           uvm_analysis_port       -     @627 
+#         seq_item_port      uvm_seq_item_pull_port  -     @619 
+#       mntr                 adder_monitor           -     @635 
+#         port_to_agnt       uvm_analysis_port       -     @652 
+#       port_to_scrbrd       uvm_analysis_port       -     @642 
+#       sqncr                uvm_sequencer           -     @503 
+#         rsp_export         uvm_analysis_export     -     @510 
+#         seq_item_export    uvm_seq_item_pull_imp   -     @604 
+#         arbitration_queue  array                   0     -    
+#         lock_queue         array                   0     -    
+#         num_last_reqs      integral                32    'd1  
+#         num_last_rsps      integral                32    'd1  
+#     scrbrd                 adder_scoreboard        -     @496 
+#       port_from_agnt       uvm_analysis_imp        -     @665 
+# --------------------------------------------------------------
+# 
+# UVM_INFO ../testbench/adder_test.sv(35) @ 0: uvm_test_top [adder_test] Started run_phase
+# UVM_INFO ../agent/adder_driver.sv(36) @ 0: uvm_test_top.envrnmnt.agnt.drvr [adder_driver] Driver sent something
+# UVM_INFO ../environment/adder_scoreboard.sv(41) @ 2: uvm_test_top.envrnmnt.scrbrd [adder_scoreboard] DUT responded as expected
+# UVM_INFO ../agent/adder_driver.sv(36) @ 2: uvm_test_top.envrnmnt.agnt.drvr [adder_driver] Driver sent something
+# UVM_INFO ../environment/adder_scoreboard.sv(41) @ 4: uvm_test_top.envrnmnt.scrbrd [adder_scoreboard] DUT responded as expected
+# UVM_INFO ../agent/adder_driver.sv(36) @ 4: uvm_test_top.envrnmnt.agnt.drvr [adder_driver] Driver sent something
+# UVM_INFO ../environment/adder_scoreboard.sv(41) @ 6: uvm_test_top.envrnmnt.scrbrd [adder_scoreboard] DUT responded as expected
+# UVM_INFO ../agent/adder_driver.sv(36) @ 6: uvm_test_top.envrnmnt.agnt.drvr [adder_driver] Driver sent something
+# UVM_INFO ../environment/adder_scoreboard.sv(41) @ 8: uvm_test_top.envrnmnt.scrbrd [adder_scoreboard] DUT responded as expected
+# UVM_INFO ../agent/adder_driver.sv(36) @ 8: uvm_test_top.envrnmnt.agnt.drvr [adder_driver] Driver sent something
+# UVM_INFO ../testbench/adder_test.sv(39) @ 8: uvm_test_top [adder_test] Finished run_phase
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 8: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   32
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [UVMTOP]     1
+# [adder_agent]     4
+# [adder_driver]     7
+# [adder_environment]     4
+# [adder_monitor]     2
+# [adder_scoreboard]     6
+# [adder_test]     4
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 8 ps  Iteration: 64  Instance: /top
+# End time: 08:12:25 on Sep 11,2023, Elapsed time: 0:00:28
+# Errors: 0, Warnings: 0
