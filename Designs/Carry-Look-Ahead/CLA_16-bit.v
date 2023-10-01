@@ -1,4 +1,4 @@
-module CLA4bit(A,B,cin,sum,cout);
+module CLA4bit1(A,B,cin,sum,cout);
 	input [3:0]A, B;
     input cin;
     output [3:0]sum;
@@ -22,7 +22,7 @@ module CLA4bit(A,B,cin,sum,cout);
 
 endmodule
 
-module CLAxbit #(parameter size = 8)(A,B,cin,sum,cout);
+module CLAxbit #(parameter size = 16)(A,B,cin,sum,cout);
 	input [size-1:0]A, B;
 	input cin;
 	output [size-1:0]sum;
@@ -34,8 +34,8 @@ module CLAxbit #(parameter size = 8)(A,B,cin,sum,cout);
         assign carry[0]=cin;
 		for (i=0;i<size;i=i+4)
 		begin:Adder
-			AdderBlock4bit ab (.A(A[i+:4]), .B(B[i+:4]),.cin(carry[i>>2]),.sum(sum[i+:4]),.cout(carry[(i>>2)+1]));
-		end:Adder
+			CLA4bit1 ab (.A(A[i+:4]), .B(B[i+:4]),.cin(carry[i>>2]),.sum(sum[i+:4]),.cout(carry[(i>>2)+1]));
+		end
         assign cout=carry[size>>2];
 	endgenerate
 endmodule
