@@ -1,4 +1,4 @@
-module CSA64bit(a,b,c,s,cout);
+module CSelAxbit(a,b,c,s,cout);
 parameter size=16; //size >= 4;
     input[size-1:0] a,b;
     input c;
@@ -22,7 +22,7 @@ module CSA4bit(a,b,c,s,cout);
     wire[4:0] w1,w0;
     output cout;
     input c;
-FA4bit single_calc [1:0] (.a({a,a}),.b({b,b}),.c({1'b1,1'b0}),.s({w1[3:0],w0[3:0]}),.cout({w1[4],w0[4]}));
+FA4bit2 single_calc [1:0] (.a({a,a}),.b({b,b}),.c({1'b1,1'b0}),.s({w1[3:0],w0[3:0]}),.cout({w1[4],w0[4]}));
 genvar i;
 generate
     for(i=0;i<4;i=i+1)
@@ -40,16 +40,16 @@ module mux2_1(d,s,f);
 assign f=s?d[1]:d[0];
 endmodule
 
-module FA4bit(a,b,c,s,cout);
+module FA4bit2(a,b,c,s,cout);
     input[3:0] a,b;
     input c;
     wire[3:1] w;
     output[3:0] s;
     output cout;
-FA1bit fulladder [3:0] (.a(a),.b(b),.c({w,c}),.s(s),.cout({cout,w})); 
+FA1bit2 fulladder [3:0] (.a(a),.b(b),.c({w,c}),.s(s),.cout({cout,w})); 
 endmodule
 
-module FA1bit(a,b,c,s,cout);
+module FA1bit2(a,b,c,s,cout);
     input a,b,c;
     output s,cout;    
 assign s=a^b^c;
