@@ -1,4 +1,4 @@
-module FA64bit(sum,cout,a,b,cin);
+module RCAxbit(sum,cout,a,b,cin);
 parameter size=16; //size >= 4;
     output [size-1:0]sum;
     output cout;
@@ -10,13 +10,13 @@ generate
     for(i=0;i<size;i=i+4)
     begin:FA
         assign carry[0]=cin;
-        FA4bit f16(.sum(sum[i+:4]),.cout(carry[(i>>2)+1]),.a(a[i+:4]),.b(b[i+:4]),.cin(carry[i>>2]));
+        FA4bit4 f16(.sum(sum[i+:4]),.cout(carry[(i>>2)+1]),.a(a[i+:4]),.b(b[i+:4]),.cin(carry[i>>2]));
         assign cout=carry[size>>2];
-    end:FA
+    end
 endgenerate
 endmodule
 
-module FA4bit(sum,cout,a,b,cin);
+module FA4bit4(sum,cout,a,b,cin);
     output [3:0]sum;
     output cout;
     input [3:0]a,b;
@@ -27,13 +27,13 @@ generate
     for(i=0;i<4;i=i+1)
     begin:FA
     assign carry[0]=cin;
-        FA1bit f1(.sum(sum[i]),.cout(carry[i+1]),.a(a[i]),.b(b[i]),.cin(carry[i]));
+        FA1bit4 f1(.sum(sum[i]),.cout(carry[i+1]),.a(a[i]),.b(b[i]),.cin(carry[i]));
     assign cout=carry[4];
-    end:FA
+    end
 endgenerate
 endmodule
 
-module FA1bit(sum,cout,a,b,cin);
+module FA1bit4(sum,cout,a,b,cin);
     output sum,cout;
     input a,b,cin;
     wire w1,w2,w3;
