@@ -4,7 +4,7 @@ class adder_packet extends uvm_sequence_item;
     bit [15:0]sum;
     bit cout;
     string agent;
-    // make the variables arrays and send to the driver directly
+
     `uvm_object_utils_begin(adder_packet)
         `uvm_field_int(a, UVM_ALL_ON)
         `uvm_field_int(b, UVM_ALL_ON)
