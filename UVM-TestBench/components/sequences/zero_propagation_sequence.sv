@@ -24,7 +24,7 @@ class zero_propagation_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
-            assert(packet_to_sequencer.randomize() with {(a == 0) ^ (b == 0); /* b is constantly 0 */})
+            assert(packet_to_sequencer.randomize() with {(a == 0) ^ (b == 0);})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
             finish_item(packet_to_sequencer);
