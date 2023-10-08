@@ -1,6 +1,6 @@
 class adder_packet extends uvm_sequence_item;
-    randc bit [15:0]a, b;
-    randc bit cin;
+    rand bit [15:0]a, b;
+    rand bit cin;
     bit [15:0]sum;
     bit cout;
     string dut_name;
