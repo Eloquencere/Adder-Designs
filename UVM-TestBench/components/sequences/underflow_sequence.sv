@@ -17,7 +17,7 @@ class underflow_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
-            assert(packet_to_sequencer.randomize() with {(a < 50 && a > -50) && (b < 50 && b > -50);}) // not working
+            assert(packet_to_sequencer.randomize() with {($signed(a) inside{[-50:50]}) && ($signed(b) inside{[-50:50]});})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
             finish_item(packet_to_sequencer);
