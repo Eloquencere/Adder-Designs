@@ -41,17 +41,17 @@ class adder_virtual_sequence extends uvm_sequence;
         wait fork;
         #2;
         
-        // $display("Started Zero Propagation sequence");
-        // foreach(p_sequencer.sqncr[i])
-        // fork
-        //     int temp = i;
-        //     begin
-        //         zro_sqnc = zero_propagation_sequence::type_id::create("zro_sqnc");
-        //         zro_sqnc.start(p_sequencer.sqncr[temp]);
-        //     end
-        // join_none
-        // wait fork;
-        // #2;
+        $display("Started Zero Propagation sequence");
+        foreach(p_sequencer.sqncr[i])
+        fork
+            int temp = i;
+            begin
+                zro_sqnc = zero_propagation_sequence::type_id::create("zro_sqnc");
+                zro_sqnc.start(p_sequencer.sqncr[temp]);
+            end
+        join_none
+        wait fork;
+        #2;
         
         $display("Started Carry Propagation sequence");
         foreach(p_sequencer.sqncr[i])
@@ -65,29 +65,29 @@ class adder_virtual_sequence extends uvm_sequence;
         wait fork;
         #2;
         
-        // $display("Started overflow sequence");
-        // foreach(p_sequencer.sqncr[i])
-        // fork
-        //     int temp = i;
-        //     begin
-        //         ovrfl_sqnc = overflow_sequence::type_id::create("ovrfl_sqnc");
-        //         ovrfl_sqnc.start(p_sequencer.sqncr[temp]);
-        //     end
-        // join_none
-        // wait fork;
-        // #2;
+        $display("Started overflow sequence");
+        foreach(p_sequencer.sqncr[i])
+        fork
+            int temp = i;
+            begin
+                ovrfl_sqnc = overflow_sequence::type_id::create("ovrfl_sqnc");
+                ovrfl_sqnc.start(p_sequencer.sqncr[temp]);
+            end
+        join_none
+        wait fork;
+        #2;
         
-        // $display("Started underflow sequence");
-        // foreach(p_sequencer.sqncr[i])
-        // fork
-        //     int temp = i;
-        //     begin
-        //         undrfl_sqnc = underflow_sequence::type_id::create("undrfl_sqnc");
-        //         undrfl_sqnc.start(p_sequencer.sqncr[temp]);
-        //     end
-        // join_none
-        // wait fork;
-        // #2;
+        $display("Started underflow sequence");
+        foreach(p_sequencer.sqncr[i])
+        fork
+            int temp = i;
+            begin
+                undrfl_sqnc = underflow_sequence::type_id::create("undrfl_sqnc");
+                undrfl_sqnc.start(p_sequencer.sqncr[temp]);
+            end
+        join_none
+        wait fork;
+        #2;
         
         $display("Started Random sequence");
         foreach(p_sequencer.sqncr[i])
