@@ -8,11 +8,11 @@ class basic_operation_sequence extends uvm_sequence;
     int total_packets = 10;
     adder_packet packet_to_sequencer;
     
-    task pre_body();
+    virtual task pre_body();
         packet_to_sequencer = adder_packet::type_id::create("packet_to_sequencer");
     endtask
     
-    task body();
+    virtual task body();
         repeat(total_packets)
         begin
             start_item(packet_to_sequencer);
