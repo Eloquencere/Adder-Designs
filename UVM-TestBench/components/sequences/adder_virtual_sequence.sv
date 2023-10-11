@@ -14,91 +14,34 @@ class adder_virtual_sequence extends uvm_sequence;
     underflow_sequence undrfl_sqnc;
     random_no_constraint_sequence rand_sqnc;
     
-    // no of packets per sequence
+    uvm_sequence test_case[$];
     
+    virtual task pre_body();
+        test_case.push_back(basic_operation_sequence::type_id::create("basic_sqnc"));
+        test_case.push_back(single_bit_sequence::type_id::create("sngl_sqnc"));
+        test_case.push_back(zero_propagation_sequence::type_id::create("zro_sqnc"));
+        test_case.push_back(carry_propagation_sequence::type_id::create("crry_sqnc"));
+        test_case.push_back(overflow_sequence::type_id::create("ovrfl_sqnc"));
+        test_case.push_back(underflow_sequence::type_id::create("undrfl_sqnc"));
+        test_case.push_back(random_no_constraint_sequence::type_id::create("rand_sqnc"));
+    endtask
+    
+    // seed no. = 2807422414
     virtual task body();
-        $display("Started Basic operation sequence");
-        foreach(p_sequencer.sqncr[i])
-        fork
-            int temp = i;
-            begin
-                basic_sqnc = basic_operation_sequence::type_id::create("basic_sqnc");
-                basic_sqnc.start(p_sequencer.sqncr[temp]);
-            end
-        join_none
-        wait fork;
-        #2;
-        
-        $display("Started Single bit sequence");
-        foreach(p_sequencer.sqncr[i])
-        fork
-            int temp = i;
-            begin
-                sngl_sqnc = single_bit_sequence::type_id::create("sngl_sqnc");
-                sngl_sqnc.start(p_sequencer.sqncr[temp]);
-            end
-        join_none
-        wait fork;
-        #2;
-        
-        $display("Started Zero Propagation sequence");
-        foreach(p_sequencer.sqncr[i])
-        fork
-            int temp = i;
-            begin
-                zro_sqnc = zero_propagation_sequence::type_id::create("zro_sqnc");
-                zro_sqnc.start(p_sequencer.sqncr[temp]);
-            end
-        join_none
-        wait fork;
-        #2;
-        
-        $display("Started Carry Propagation sequence");
-        foreach(p_sequencer.sqncr[i])
-        fork
-            int temp = i;
-            begin
-                crry_sqnc = carry_propagation_sequence::type_id::create("crry_sqnc");
-                crry_sqnc.start(p_sequencer.sqncr[temp]);
-            end
-        join_none
-        wait fork;
-        #2;
-        
-        $display("Started overflow sequence");
-        foreach(p_sequencer.sqncr[i])
-        fork
-            int temp = i;
-            begin
-                ovrfl_sqnc = overflow_sequence::type_id::create("ovrfl_sqnc");
-                ovrfl_sqnc.start(p_sequencer.sqncr[temp]);
-            end
-        join_none
-        wait fork;
-        #2;
-        
-        $display("Started underflow sequence");
-        foreach(p_sequencer.sqncr[i])
-        fork
-            int temp = i;
-            begin
-                undrfl_sqnc = underflow_sequence::type_id::create("undrfl_sqnc");
-                undrfl_sqnc.start(p_sequencer.sqncr[temp]);
-            end
-        join_none
-        wait fork;
-        #2;
-        
-        $display("Started Random sequence");
-        foreach(p_sequencer.sqncr[i])
-        fork
-            int temp = i;
-            begin
-                rand_sqnc = random_no_constraint_sequence::type_id::create("rand_sqnc");
-                rand_sqnc.start(p_sequencer.sqncr[temp]);
-            end
-        join_none
-        wait fork;
-        #2;
+        foreach(test_case[i])
+        begin
+            $display("Started Sequence %d", i);
+            foreach(p_sequencer.sqncr[j])
+            fork
+                int temp = j;
+                start_sequence(temp, test_case[i].clone());
+            join_none
+            wait fork;
+            #2;
+        end
+    endtask
+    
+    task start_sequence(int sqncr_no, uvm_sequence sqnc);
+        sqnc.start(p_sequencer.sqncr[sqncr_no]);
     endtask
 endclass
