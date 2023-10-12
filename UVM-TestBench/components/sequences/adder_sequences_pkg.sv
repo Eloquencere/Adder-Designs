@@ -10,5 +10,6 @@ package adder_sequences_pkg;
 	`include "carry_propagation_sequence.sv"
 	`include "overflow_sequence.sv"
 	`include "underflow_sequence.sv"
+	`include "adjacent_values_sequence.sv"
 	`include "random_no_constraint_sequence.sv"
 endpackage
