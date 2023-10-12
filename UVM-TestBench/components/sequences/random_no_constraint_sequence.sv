@@ -10,7 +10,7 @@ class random_no_constraint_sequence extends uvm_sequence;
     
     virtual task pre_body();
         packet_to_sequencer = adder_packet::type_id::create("packet_to_sequencer");
-        packet_to_sequencer.constraint_mode(0); // disable constraints
+        packet_to_sequencer.constraint_mode(0); // disable all constraints
     endtask
     
     virtual task body();
