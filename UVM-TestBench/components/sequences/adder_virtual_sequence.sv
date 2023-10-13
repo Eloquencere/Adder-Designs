@@ -6,6 +6,8 @@ class adder_virtual_sequence extends uvm_sequence;
         super.new(name);
     endfunction
     
+    uvm_sequence test_case[$];
+    
     basic_operation_sequence basic_sqnc;
     single_bit_sequence sngl_sqnc;
     zero_propagation_sequence zro_sqnc;
@@ -14,8 +16,6 @@ class adder_virtual_sequence extends uvm_sequence;
     underflow_sequence undrfl_sqnc;
     adjacent_values_sequence adjcnt_sqnc;
     random_no_constraint_sequence rand_sqnc;
-    
-    uvm_sequence test_case[$];
     
     virtual task pre_body();
         test_case.push_back(basic_operation_sequence::type_id::create("basic_sqnc"));
@@ -27,13 +27,11 @@ class adder_virtual_sequence extends uvm_sequence;
         test_case.push_back(adjacent_values_sequence::type_id::create("adjcnt_sqnc"));
         test_case.push_back(random_no_constraint_sequence::type_id::create("rand_sqnc"));
     endtask
-
-    // seed no. = 2807422414
     
     virtual task body();
         foreach(test_case[i])
         begin
-            $display("Started Sequence %0d", i);
+            $display("Started %s", test_case[i].get_type_name());
             foreach(p_sequencer.sqncr[j])
             fork
                 int temp = j;
