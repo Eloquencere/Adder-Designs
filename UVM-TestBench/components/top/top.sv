@@ -33,7 +33,7 @@ module top;
             2: CSelAxbit DUT2(.a(intrf.a), .b(intrf.b), .c(intrf.cin), .s(intrf.sum), .cout(intrf.cout));
             3: CSkAxbit DUT3(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));
             4: RCAxbit DUT4(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));
-            5: MCCAxbit DUT5(.sum(intrf.sum),.cout(intrf.cout),.a(intrf.a),.b(intrf.b),.cin(intrf.cin));
+            5: MCCAxbit DUT5(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));
         endcase
         initial uvm_config_db#(virtual adder_interface)::set(null,"*", $sformatf("Adder_Interface[%0d]", i), intrf);
     end
