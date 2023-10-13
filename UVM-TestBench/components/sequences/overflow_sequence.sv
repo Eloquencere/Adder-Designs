@@ -17,16 +17,7 @@ class overflow_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
-            assert(packet_to_sequencer.randomize() with {($signed(a) > 32500) && ($signed(b) > 32500);})
-            else `uvm_fatal(get_name(), "Unable to randomize")
-            
-            finish_item(packet_to_sequencer);
-        end
-        repeat(total_packets)
-        begin
-            start_item(packet_to_sequencer);
-            
-            assert(packet_to_sequencer.randomize() with {($signed(a) < -32500) && ($signed(b) < -32500);})
+            assert(packet_to_sequencer.randomize() with {(a > 65500) && (b > 65500);})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
             finish_item(packet_to_sequencer);
