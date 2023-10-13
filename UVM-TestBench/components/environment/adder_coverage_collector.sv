@@ -44,8 +44,7 @@ class adder_coverage_collector extends uvm_subscriber#(adder_packet);
     
     virtual function void write(adder_packet t);
         packet_from_scrbrd = t;
-        if(env_cfg.need_coverage)
-            set.sample();
+        set.sample();
     endfunction
     
     virtual function void report_phase(uvm_phase phase);
