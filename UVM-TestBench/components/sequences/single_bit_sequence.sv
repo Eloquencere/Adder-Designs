@@ -17,7 +17,7 @@ class single_bit_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
-            assert(packet_to_sequencer.randomize() with {$countones(a) == 1 && $countones(b) == 1;})
+            assert(packet_to_sequencer.randomize() with {$onehot(a) && $onehot(b);})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
             finish_item(packet_to_sequencer);
