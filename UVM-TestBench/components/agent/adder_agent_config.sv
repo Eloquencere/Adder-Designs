@@ -7,6 +7,6 @@ class adder_agent_config extends uvm_object;
     
     virtual adder_interface intrf;
     
-    int drvr_trans_count = 0;
-    int mntr_trans_count = 0;
+    int drvr_trans_count;
+    int mntr_trans_count;
 endclass
