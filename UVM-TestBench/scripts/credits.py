@@ -18,7 +18,7 @@ def display_countdown(text, seconds):
 print(pyfiglet.figlet_format("Bit Bots", font="georgia11", width=700))
 
 print(
-    "Made with \033[91m❤\033[0m by Sriranga(github.com/Eloquencere/) & Siddhaanth(github.com/spacebiz24/)"
+    "Made with 💙 by Sriranga(github.com/Eloquencere/) & Siddhaanth(github.com/spacebiz24/)"
 )
 print("\n")
 display_countdown("Initialising Verification Environment", 7)
