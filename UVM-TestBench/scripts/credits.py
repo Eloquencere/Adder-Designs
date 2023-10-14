@@ -1,6 +1,6 @@
 import sys
-import pyfiglet
 import time
+from pyfiglet import figlet_format
 
 
 def display_countdown(text, seconds):
@@ -12,7 +12,7 @@ def display_countdown(text, seconds):
         time.sleep(1)
 
 
-print(pyfiglet.figlet_format("Bit Bots", font="georgia11", width=700))
+print(figlet_format("Bit Bots", font="georgia11", width=700))
 
 print(
     "Made with 💙 by Sriranga(github.com/Eloquencere/) & Siddhaanth(github.com/spacebiz24/)"
