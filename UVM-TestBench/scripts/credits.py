@@ -1,15 +1,15 @@
-import sys
-import time
+from sys import stdout
+from time import sleep
 from pyfiglet import figlet_format
 
 
 def display_countdown(text, seconds):
     print(f"{text} in {seconds} seconds", end="", flush=True)
     for i in range(seconds, -1, -1):
-        sys.stdout.write("\r")
-        sys.stdout.write("\033[K")
+        stdout.write("\r")
+        stdout.write("\033[K")
         print(f"{text} in {i} seconds", end="", flush=True)
-        time.sleep(1)
+        sleep(1)
 
 
 print(figlet_format("Bit Bots", font="georgia11", width=700))
