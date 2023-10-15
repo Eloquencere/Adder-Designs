@@ -6,6 +6,7 @@ class overflow_sequence extends uvm_sequence;
     endfunction
     
     int total_packets = 10;
+    int threshold = 65500;
     adder_packet packet_to_sequencer;
     
     virtual task pre_body();
@@ -17,7 +18,7 @@ class overflow_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
-            assert(packet_to_sequencer.randomize() with {(a > 65500) && (b > 65500);})
+            assert(packet_to_sequencer.randomize() with {(a > threshold) && (b > threshold);})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
             finish_item(packet_to_sequencer);
