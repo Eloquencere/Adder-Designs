@@ -25,8 +25,8 @@ class adder_environment extends uvm_env;
             agnt.push_back(adder_agent::type_id::create($sformatf("agnt[%0d]", i), this));
             agnt[i].agent_number = i;
         end
-        scrbrd = adder_scoreboard::type_id::create("scrbrd", this);
         
+        scrbrd = adder_scoreboard::type_id::create("scrbrd", this);
         cov_cllctr = adder_coverage_collector::type_id::create("cov_cllctr", this);
         
         for(int i = 0; i < adder_testbench_constants_pkg::dut_list.size(); i++)
