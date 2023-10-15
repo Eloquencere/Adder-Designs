@@ -32,8 +32,6 @@ class adder_environment extends uvm_env;
         for(int i = 0; i < adder_testbench_constants_pkg::dut_list.size(); i++)
         begin
             agnt_cfg = adder_agent_config::type_id::create("agnt_cfg");
-            assert(uvm_config_db#(virtual adder_interface)::get(this, "", $sformatf("Adder_Interface[%0d]", i), agnt_cfg.intrf))
-            else `uvm_fatal(get_type_name(), "Failed to get a handle to the interface")
             uvm_config_db#(adder_agent_config)::set(this, $sformatf("agnt[%0d].*", i), "agnt_cfg", agnt_cfg);
         end
         
