@@ -37,7 +37,7 @@ module top;
         endcase
         initial uvm_config_db#(virtual adder_interface)::set
         (
-            uvm_root::get(), "uvm_test_top.envrnmnt", $sformatf("Adder_Interface[%0d]", i), intrf
+            uvm_root::get(), $sformatf("uvm_test_top.envrnmnt.agnt[%0d].*", i), "Adder_Interface", intrf
         );
     end
     /// Instintiation end ///
@@ -45,7 +45,7 @@ module top;
     initial
     begin
         static adder_test_config tst_cfg = adder_test_config::type_id::create("tst_cfg");
-        uvm_config_db#(adder_test_config)::set(uvm_root::get(),"uvm_test_top", "tst_cfg", tst_cfg);
+        uvm_config_db#(adder_test_config)::set(uvm_root::get(), "uvm_test_top", "tst_cfg", tst_cfg);
         // $timeformat(-9, 2, " ns", 20);
         run_test("adder_test");
     end
