@@ -14,7 +14,7 @@ class adder_monitor extends uvm_monitor;
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_agent_config)::get(null, "*", $sformatf("agnt_cfg[%0d]", agent_number), agnt_cfg))
+        assert(uvm_config_db#(adder_agent_config)::get(this, $sformatf("agnt[%0d].mntr", agent_number), "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
         
         port_to_agnt = new("port_to_agnt", this);
