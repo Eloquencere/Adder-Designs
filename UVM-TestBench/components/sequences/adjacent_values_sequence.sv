@@ -6,6 +6,7 @@ class adjacent_values_sequence extends uvm_sequence;
     endfunction
     
     int total_packets = 10;
+    int proximity = 40;
     adder_packet packet_to_sequencer;
     
     virtual task pre_body();
@@ -17,7 +18,7 @@ class adjacent_values_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
-            assert(packet_to_sequencer.randomize() with {(a-b) < 40;})
+            assert(packet_to_sequencer.randomize() with {(a-b) < proximity;})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
             finish_item(packet_to_sequencer);
