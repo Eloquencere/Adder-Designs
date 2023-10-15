@@ -13,7 +13,7 @@ class adder_driver extends uvm_driver#(adder_packet);
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_agent_config)::get(null, "*", $sformatf("agnt_cfg[%0d]", agent_number), agnt_cfg))
+        assert(uvm_config_db#(adder_agent_config)::get(this, $sformatf("agnt[%0d].drvr", agent_number), "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
         
         `uvm_info(get_name(), "Finished build_phase", UVM_FULL)
