@@ -13,7 +13,7 @@ class adder_test extends uvm_test;
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_test_config)::get(null,"*", "tst_cfg", tst_cfg))
+        assert(uvm_config_db#(adder_test_config)::get(this,"", "tst_cfg", tst_cfg))
         else `uvm_fatal(get_type_name(), "Couldn't get test config")
         
         vsqnc = adder_virtual_sequence::type_id::create("vsqnc");
@@ -21,7 +21,7 @@ class adder_test extends uvm_test;
         envrnmnt = adder_environment::type_id::create("envrnmnt", this);
         
         env_cfg = adder_environment_config::type_id::create("env_cfg");
-        uvm_config_db#(adder_environment_config)::set(null,"*", "env_cfg", env_cfg);
+        uvm_config_db#(adder_environment_config)::set(this, "envrnmnt.*", "env_cfg", env_cfg);
         
         `uvm_info(get_type_name(), "Finished build_phase", UVM_FULL)
     endfunction
