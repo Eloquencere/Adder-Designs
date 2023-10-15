@@ -6,8 +6,7 @@ class adder_virtual_sequence extends uvm_sequence;
         super.new(name);
     endfunction
     
-    typedef uvm_sequence sequences[$];
-    sequences test_case[string];
+    uvm_sequence test_case[$];
     
     basic_operation_sequence basic_sqnc;
     single_bit_sequence sngl_sqnc;
@@ -19,30 +18,31 @@ class adder_virtual_sequence extends uvm_sequence;
     random_no_constraint_sequence rand_sqnc;
     
     virtual task pre_body();
-        foreach(p_sequencer.sqncr[j])
-        begin
-            test_case["basic_sqnc"].push_back(basic_operation_sequence::type_id::create($sformatf("basic_sqnc[%0d]", j)));
-            test_case["sngl_sqnc"].push_back(single_bit_sequence::type_id::create($sformatf("sngl_sqnc[%0d]", j)));
-            test_case["zro_sqnc"].push_back(zero_propagation_sequence::type_id::create($sformatf("zro_sqnc[%0d]", j)));
-            test_case["crry_sqnc"].push_back(carry_propagation_sequence::type_id::create($sformatf("crry_sqnc[%0d]", j)));
-            test_case["ovrfl_sqnc"].push_back(overflow_sequence::type_id::create($sformatf("ovrfl_sqnc[%0d]", j)));
-            test_case["undrfl_sqnc"].push_back(underflow_sequence::type_id::create($sformatf("undrfl_sqnc[%0d]", j)));
-            test_case["adjcnt_sqnc"].push_back(adjacent_values_sequence::type_id::create($sformatf("adjcnt_sqnc[%0d]", j)));
-            test_case["rand_sqnc"].push_back(random_no_constraint_sequence::type_id::create($sformatf("rand_sqnc[%0d]", j)));
-        end
+        test_case.push_back(basic_operation_sequence::type_id::create("basic_sqnc"));
+        test_case.push_back(single_bit_sequence::type_id::create("sngl_sqnc"));
+        test_case.push_back(zero_propagation_sequence::type_id::create("zro_sqnc"));
+        test_case.push_back(carry_propagation_sequence::type_id::create("crry_sqnc"));
+        test_case.push_back(overflow_sequence::type_id::create("ovrfl_sqnc"));
+        test_case.push_back(underflow_sequence::type_id::create("undrfl_sqnc"));
+        test_case.push_back(adjacent_values_sequence::type_id::create("adjcnt_sqnc"));
+        test_case.push_back(random_no_constraint_sequence::type_id::create("rand_sqnc"));
     endtask
     
     virtual task body();
         foreach(test_case[i])
         begin
-            $display("Started %s", test_case[i][0].get_type_name());
+            $display("Started %s", test_case[i].get_type_name());
             foreach(p_sequencer.sqncr[j])
             fork
                 int temp = j;
-                test_case[i][temp].start(p_sequencer.sqncr[temp]);
+                start_sequence(temp, test_case[i].clone());
             join_none
             wait fork;
             #2;
         end
+    endtask
+    
+    task start_sequence(int sqncr_no, uvm_sequence sqnc);
+        sqnc.start(p_sequencer.sqncr[sqncr_no]);
     endtask
 endclass
