@@ -35,6 +35,7 @@ class adder_virtual_sequence extends uvm_sequence;
     virtual task body();
         foreach(test_case[i])
         begin
+            $display("Started %s", test_case[i][0].get_type_name());
             foreach(p_sequencer.sqncr[j])
             fork
                 int temp = j;
