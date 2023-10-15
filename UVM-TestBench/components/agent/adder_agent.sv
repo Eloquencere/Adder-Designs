@@ -16,7 +16,7 @@ class adder_agent extends uvm_agent;
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_agent_config)::get(null, "*", $sformatf("agnt_cfg[%0d]", agent_number), agnt_cfg))
+        assert(uvm_config_db#(adder_agent_config)::get(this, $sformatf("agnt[%0d]", agent_number), "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
         
         sqncr = uvm_sequencer#(adder_packet)::type_id::create("sqncr", this);
@@ -37,7 +37,7 @@ class adder_agent extends uvm_agent;
         `uvm_info(get_name(), "Finished connect_phase", UVM_FULL)
     endfunction
     
-    function void write(adder_packet packet_from_mntr);	
+    function void write(adder_packet packet_from_mntr);
         packet_from_mntr.dut_name = $sformatf("%s", adder_testbench_constants_pkg::dut_list[agent_number]);
         port_to_scrbrd.write(packet_from_mntr);
         // packet_from_mntr.print()
