@@ -15,7 +15,7 @@ class adder_environment extends uvm_env;
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_environment_config)::get(null,"*", "env_cfg", env_cfg))
+        assert(uvm_config_db#(adder_environment_config)::get(this, "envrnmnt", "env_cfg", env_cfg))
         else `uvm_fatal(get_type_name(), "Failed to get environment config")
         
         vsqncr = adder_virtual_sequencer::type_id::create("vsqncr", this);
@@ -26,14 +26,15 @@ class adder_environment extends uvm_env;
             agnt[i].agent_number = i;
         end
         scrbrd = adder_scoreboard::type_id::create("scrbrd", this);
+        
         cov_cllctr = adder_coverage_collector::type_id::create("cov_cllctr", this);
         
         for(int i = 0; i < adder_testbench_constants_pkg::dut_list.size(); i++)
         begin
-            agnt_cfg = adder_agent_config::type_id::create($sformatf("agnt_cfg[%0d]", i));
-            assert(uvm_config_db#(virtual adder_interface)::get(null,"*", $sformatf("Adder_Interface[%0d]", i), agnt_cfg.intrf))
+            agnt_cfg = adder_agent_config::type_id::create("agnt_cfg");
+            assert(uvm_config_db#(virtual adder_interface)::get(this, "", $sformatf("Adder_Interface[%0d]", i), agnt_cfg.intrf))
             else `uvm_fatal(get_type_name(), "Failed to get a handle to the interface")
-            uvm_config_db#(adder_agent_config)::set(null,"*", $sformatf("agnt_cfg[%0d]", i), agnt_cfg);
+            uvm_config_db#(adder_agent_config)::set(this, $sformatf("agnt[%0d].*", i), "agnt_cfg", agnt_cfg);
         end
         
         `uvm_info(get_type_name(), "Finished build_phase", UVM_FULL)
