@@ -36,7 +36,7 @@ class adder_coverage_collector extends uvm_subscriber#(adder_packet);
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_environment_config)::get(null,"*", "env_cfg", env_cfg))
+        assert(uvm_config_db#(adder_environment_config)::get(this, "scrbrd", "env_cfg", env_cfg))
         else `uvm_fatal(get_type_name(), "Failed to get environment config")
         
         `uvm_info(get_type_name(), "Finished build_phase", UVM_FULL)
