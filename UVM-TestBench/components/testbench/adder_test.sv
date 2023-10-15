@@ -40,7 +40,7 @@ class adder_test extends uvm_test;
         `uvm_info(get_type_name(), "Started run_phase", UVM_MEDIUM)
         
         vsqnc.start(envrnmnt.vsqncr);
-        #3;
+        #2;
         
         `uvm_info(get_type_name(), "Finished run_phase", UVM_MEDIUM)
         phase.drop_objection(this);
