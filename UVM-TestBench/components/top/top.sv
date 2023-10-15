@@ -35,14 +35,17 @@ module top;
             4: RCAxbit DUT4(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));
             5: MCCAxbit DUT5(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));
         endcase
-        initial uvm_config_db#(virtual adder_interface)::set(null,"*", $sformatf("Adder_Interface[%0d]", i), intrf);
+        initial uvm_config_db#(virtual adder_interface)::set
+        (
+            uvm_root::get(), "uvm_test_top.envrnmnt", $sformatf("Adder_Interface[%0d]", i), intrf
+        );
     end
     /// Instintiation end ///
     
     initial
     begin
         static adder_test_config tst_cfg = adder_test_config::type_id::create("tst_cfg");
-        uvm_config_db#(adder_test_config)::set(null,"*", "tst_cfg", tst_cfg);
+        uvm_config_db#(adder_test_config)::set(uvm_root::get(),"uvm_test_top", "tst_cfg", tst_cfg);
         // $timeformat(-9, 2, " ns", 20);
         run_test("adder_test");
     end
