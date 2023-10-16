@@ -13,7 +13,7 @@ class adder_test extends uvm_test;
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_test_config)::get(this,"", "tst_cfg", tst_cfg))
+        assert(uvm_config_db#(adder_test_config)::get(this, "", "tst_cfg", tst_cfg))
         else `uvm_fatal(get_type_name(), "Couldn't get test config")
         
         vsqnc = adder_virtual_sequence::type_id::create("vsqnc");
