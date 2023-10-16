@@ -8,15 +8,14 @@ class adder_driver extends uvm_driver#(adder_packet);
     adder_agent_config agnt_cfg;
     adder_packet packet_from_sequencer;
     virtual adder_interface.drvr_modprt drvr_vintrf;
-    int agent_number;
     
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_agent_config)::get(this, $sformatf("agnt[%0d].drvr", agent_number), "agnt_cfg", agnt_cfg))
+        assert(uvm_config_db#(adder_agent_config)::get(this, "drvr", "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
         
-        assert(uvm_config_db#(virtual adder_interface)::get(this, $sformatf("agnt[%0d].drvr", agent_number), "Adder_Interface", drvr_vintrf))
+        assert(uvm_config_db#(virtual adder_interface)::get(this, "drvr", "Adder_Interface", drvr_vintrf))
         else `uvm_fatal(get_type_name(), "Failed to get a handle to the interface")
         
         `uvm_info(get_name(), "Finished build_phase", UVM_FULL)
