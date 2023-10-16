@@ -5,7 +5,6 @@ class adder_agent extends uvm_agent;
         super.new(name, parent);
     endfunction
     
-    int agent_number;
     adder_agent_config agnt_cfg;
     uvm_sequencer#(adder_packet) sqncr;
     adder_driver drvr;
@@ -16,12 +15,12 @@ class adder_agent extends uvm_agent;
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_name(), "Started build_phase", UVM_FULL)
         
-        assert(uvm_config_db#(adder_agent_config)::get(this, $sformatf("agnt[%0d]", agent_number), "agnt_cfg", agnt_cfg))
+        assert(uvm_config_db#(adder_agent_config)::get(this, "agnt", "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
         
         sqncr = uvm_sequencer#(adder_packet)::type_id::create("sqncr", this);
-        drvr = adder_driver::type_id::create("drvr", this); drvr.agent_number = agent_number;
-        mntr = adder_monitor::type_id::create("mntr", this); mntr.agent_number = agent_number;
+        drvr = adder_driver::type_id::create("drvr", this); 
+        mntr = adder_monitor::type_id::create("mntr", this);
         port_from_mntr = new("port_from_mntr", this);
         port_to_scrbrd = new("port_to_scrbrd", this);
         
@@ -38,7 +37,7 @@ class adder_agent extends uvm_agent;
     endfunction
     
     function void write(adder_packet packet_from_mntr);
-        packet_from_mntr.dut_name = $sformatf("%s", adder_testbench_constants_pkg::dut_list[agent_number]);
+        packet_from_mntr.dut_name = $sformatf("%s", adder_testbench_constants_pkg::dut_list[agnt_cfg.agent_number]);
         port_to_scrbrd.write(packet_from_mntr);
         // packet_from_mntr.print()
     endfunction
