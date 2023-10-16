@@ -21,10 +21,7 @@ class adder_environment extends uvm_env;
         vsqncr = adder_virtual_sequencer::type_id::create("vsqncr", this);
         
         for(int i = 0; i < adder_testbench_constants_pkg::dut_list.size(); i++)
-        begin
             agnt.push_back(adder_agent::type_id::create($sformatf("agnt[%0d]", i), this));
-            agnt[i].agent_number = i;
-        end
         
         scrbrd = adder_scoreboard::type_id::create("scrbrd", this);
         cov_cllctr = adder_coverage_collector::type_id::create("cov_cllctr", this);
@@ -32,6 +29,7 @@ class adder_environment extends uvm_env;
         for(int i = 0; i < adder_testbench_constants_pkg::dut_list.size(); i++)
         begin
             agnt_cfg = adder_agent_config::type_id::create("agnt_cfg");
+            agnt_cfg.agent_number = i;
             uvm_config_db#(adder_agent_config)::set(this, $sformatf("agnt[%0d].*", i), "agnt_cfg", agnt_cfg);
         end
         
