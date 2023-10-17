@@ -8,9 +8,9 @@ class adder_environment extends uvm_env;
     adder_environment_config env_cfg;
     adder_virtual_sequencer vsqncr;
     adder_agent agnt[$];
+    adder_agent_config agnt_cfg;
     adder_scoreboard scrbrd;
     adder_coverage_collector cov_cllctr;
-    adder_agent_config agnt_cfg;
     
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
@@ -20,18 +20,16 @@ class adder_environment extends uvm_env;
         
         vsqncr = adder_virtual_sequencer::type_id::create("vsqncr", this);
         
-        for(int i = 0; i < adder_testbench_constants_pkg::dut_list.size(); i++)
+        foreach(adder_testbench_constants_pkg::dut_list[i])
+        begin
             agnt.push_back(adder_agent::type_id::create($sformatf("agnt[%0d]", i), this));
+            agnt_cfg = adder_agent_config::type_id::create("agnt_cfg");
+            agnt_cfg.dut_name = adder_testbench_constants_pkg::dut_list[i];
+            uvm_config_db#(adder_agent_config)::set(this, $sformatf("agnt[%0d].*", i), "agnt_cfg", agnt_cfg);
+        end
         
         scrbrd = adder_scoreboard::type_id::create("scrbrd", this);
         cov_cllctr = adder_coverage_collector::type_id::create("cov_cllctr", this);
-        
-        for(int i = 0; i < adder_testbench_constants_pkg::dut_list.size(); i++)
-        begin
-            agnt_cfg = adder_agent_config::type_id::create("agnt_cfg");
-            agnt_cfg.agent_number = i;
-            uvm_config_db#(adder_agent_config)::set(this, $sformatf("agnt[%0d].*", i), "agnt_cfg", agnt_cfg);
-        end
         
         `uvm_info(get_type_name(), "Finished build_phase", UVM_FULL)
     endfunction
@@ -40,10 +38,10 @@ class adder_environment extends uvm_env;
         `uvm_info(get_type_name(), "Started connect_phase", UVM_FULL)
         
         foreach(agnt[i])
+        begin
             vsqncr.sqncr[i] = agnt[i].sqncr;
-        
-        foreach(agnt[i])
             agnt[i].port_to_scrbrd.connect(scrbrd.fifo_port_from_agnts.analysis_export);
+        end
         
         scrbrd.port_to_cov_cllctr.connect(cov_cllctr.analysis_export);
         
