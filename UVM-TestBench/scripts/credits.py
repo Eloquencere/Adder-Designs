@@ -18,4 +18,4 @@ print(
     "Made with 💙 by Sriranga(github.com/Eloquencere/) & Siddhaanth(github.com/spacebiz24/)"
 , end = "\n\n")
 
-display_countdown("Initialising Verification Environment", 7)
+display_countdown("Initialising Verification Environment", 10)
