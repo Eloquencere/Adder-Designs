@@ -15,7 +15,7 @@ class adder_driver extends uvm_driver#(adder_packet);
         assert(uvm_config_db#(adder_agent_config)::get(this, "drvr", "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
         
-        assert(uvm_config_db#(virtual adder_interface)::get(this, "drvr", "Adder_Interface", drvr_vintrf))
+        assert(uvm_config_db#(virtual adder_interface)::get(this, "drvr", $sformatf("%s_Interface", agnt_cfg.dut_name), drvr_vintrf))
         else `uvm_fatal(get_type_name(), "Failed to get a handle to the interface")
         
         `uvm_info(get_name(), "Finished build_phase", UVM_FULL)
