@@ -21,10 +21,11 @@
 
 import uvm_pkg::*;
 import adder_testbench_pkg::*;
+import adder_testbench_constants_pkg::dut_list;
 
 module top;
     /// Instintiation begin ///
-    for(genvar i = 0; i < $size(adder_testbench_constants_pkg::dut_list); i++)
+    for(genvar i = 0; i < $size(dut_list); i++)
     begin
         adder_interface intrf();
         case(i)
@@ -37,7 +38,7 @@ module top;
         endcase
         initial uvm_config_db#(virtual adder_interface)::set
         (
-            uvm_root::get(), $sformatf("uvm_test_top.envrnmnt.agnt[%0d].*", i), "Adder_Interface", intrf
+            uvm_root::get(), $sformatf("uvm_test_top.envrnmnt.agnt[%0d].*", i), $sformatf("%s_Interface", dut_list[i]), intrf
         );
     end
     /// Instintiation end ///
