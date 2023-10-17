@@ -10,7 +10,7 @@ class adder_report_server extends uvm_report_server;
     );
     uvm_severity_type sev = uvm_severity_type'(severity);
     
-    bit colour_enable = 0;
+    bit colour_enable = 1;
     adder_colours_pkg::colour_t colour;
     
     if(colour_enable)
