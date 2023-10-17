@@ -5,7 +5,7 @@ class adder_agent_config extends uvm_object;
         super.new(name);
     endfunction
     
-    int agent_number;
+    string dut_name;
     
     int drvr_trans_count;
     int mntr_trans_count;
