@@ -16,12 +16,18 @@ class adder_monitor extends uvm_monitor;
         assert(uvm_config_db#(adder_agent_config)::get(this, "mntr", "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
         
-        assert(uvm_config_db#(virtual adder_interface)::get(this, "mntr", $sformatf("%s_Interface", agnt_cfg.dut_name), mntr_vintrf))
-        else `uvm_fatal(get_type_name(), "Failed to get a handle to the interface")
-        
         port_to_agnt = new("port_to_agnt", this);
         
         `uvm_info(get_name(), "Finished build_phase", UVM_FULL)
+    endfunction
+    
+    virtual function void connect_phase(uvm_phase phase);
+        `uvm_info(get_type_name(), "Started connect_phase", UVM_FULL)
+        
+        assert(uvm_config_db#(virtual adder_interface)::get(this, "mntr", $sformatf("%s_Interface", agnt_cfg.dut_name), mntr_vintrf))
+        else `uvm_fatal(get_type_name(), "Failed to get a handle to the interface")
+        
+        `uvm_info(get_type_name(), "Finished connect_phase", UVM_FULL)
     endfunction
     
     virtual task run_phase(uvm_phase phase);
