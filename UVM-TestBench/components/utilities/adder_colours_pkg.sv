@@ -8,7 +8,7 @@ package adder_colours_pkg;
         RED:"\033[31m"
     };
     
-    function string colourise(colour_t colour, string report_message);
-        return $sformatf("%s%s\033[0m", fg_format[colour], report_message);
+    function string colourise(colour_t colour, string text);
+        return $sformatf("%s%s\033[0m", fg_format[colour], text);
     endfunction
 endpackage
