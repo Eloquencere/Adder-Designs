@@ -15,7 +15,7 @@ class underflow_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
-            assert(packet_to_sequencer.randomize() with {(a inside{[0:threshold]}) && (b inside{[0:threshold]});})
+            assert(packet_to_sequencer.randomize() with {(a < threshold) && (b < threshold);})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
             finish_item(packet_to_sequencer);
