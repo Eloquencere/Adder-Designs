@@ -13,7 +13,7 @@ class adder_environment extends uvm_env;
     adder_coverage_collector cov_cllctr;
     
     virtual function void build_phase(uvm_phase phase);
-        `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         assert(uvm_config_db#(adder_environment_config)::get(this, "envrnmnt", "env_cfg", env_cfg))
         else `uvm_fatal(get_type_name(), "Failed to get environment config")
@@ -31,11 +31,11 @@ class adder_environment extends uvm_env;
         scrbrd = adder_scoreboard::type_id::create("scrbrd", this);
         cov_cllctr = adder_coverage_collector::type_id::create("cov_cllctr", this);
         
-        `uvm_info(get_type_name(), "Finished build_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
     
     virtual function void connect_phase(uvm_phase phase);
-        `uvm_info(get_type_name(), "Started connect_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         foreach(agnt[i])
         begin
@@ -45,6 +45,6 @@ class adder_environment extends uvm_env;
         
         scrbrd.port_to_cov_cllctr.connect(cov_cllctr.analysis_export);
         
-        `uvm_info(get_type_name(), "Finished connect_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
 endclass
