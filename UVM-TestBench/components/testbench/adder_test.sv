@@ -11,7 +11,7 @@ class adder_test extends uvm_test;
     adder_environment_config env_cfg;
     
     virtual function void build_phase(uvm_phase phase);
-        `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         assert(uvm_config_db#(adder_test_config)::get(this, "", "tst_cfg", tst_cfg))
         else `uvm_fatal(get_type_name(), "Couldn't get test config")
@@ -23,26 +23,26 @@ class adder_test extends uvm_test;
         env_cfg = adder_environment_config::type_id::create("env_cfg");
         uvm_config_db#(adder_environment_config)::set(this, "envrnmnt.*", "env_cfg", env_cfg);
         
-        `uvm_info(get_type_name(), "Finished build_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
     
     virtual function void end_of_elaboration_phase(uvm_phase phase);
-        `uvm_info(get_type_name(), "Started end_of_elaboration_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         uvm_top.print_topology();
         uvm_config_db#(int)::dump();
         
-        `uvm_info(get_type_name(), "Finished end_of_elaboration_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
     
     virtual task run_phase(uvm_phase phase);
         phase.raise_objection(this);
-        `uvm_info(get_type_name(), "Started run_phase", UVM_MEDIUM)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_MEDIUM)
         
         vsqnc.start(envrnmnt.vsqncr);
         #2;
         
-        `uvm_info(get_type_name(), "Finished run_phase", UVM_MEDIUM)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_MEDIUM)
         phase.drop_objection(this);
     endtask
 endclass
