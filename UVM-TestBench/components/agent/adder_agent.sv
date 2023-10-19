@@ -13,7 +13,7 @@ class adder_agent extends uvm_agent;
     uvm_analysis_port #(adder_packet) port_to_scrbrd;
     
     virtual function void build_phase(uvm_phase phase);
-        `uvm_info(get_name(), "Started build_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         assert(uvm_config_db#(adder_agent_config)::get(this, "agnt", "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
@@ -24,16 +24,16 @@ class adder_agent extends uvm_agent;
         port_from_mntr = new("port_from_mntr", this);
         port_to_scrbrd = new("port_to_scrbrd", this);
         
-        `uvm_info(get_name(), "Finished build_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
     
     virtual function void connect_phase(uvm_phase phase);
-        `uvm_info(get_name(), "Started connect_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         drvr.seq_item_port.connect(sqncr.seq_item_export);
         mntr.port_to_agnt.connect(port_from_mntr);
         
-        `uvm_info(get_name(), "Finished connect_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
     
     function void write(adder_packet packet_from_mntr);
