@@ -1,8 +1,8 @@
 // include this directory when compiling to remove the ../../
 
-../../designs/CIA_16-bit.v
-../../designs/CLA_16-bit.v
-../../designs/CSelA_16-bit.v
-../../designs/CSkA_16-bit.v
-../../designs/RCA_16-bit.v
-../../designs/MCCA_16-bit.v
+../../designs/Carry-Increment/*
+../../designs/Carry-Look-Ahead/*
+../../designs/Carry-Select/*
+../../designs/Carry-Skip/*
+../../designs/Ripple-Carry/*
+../../designs/Manchester-Carry-Chain/*
