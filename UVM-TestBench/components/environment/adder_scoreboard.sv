@@ -12,16 +12,16 @@ class adder_scoreboard extends uvm_scoreboard;
     uvm_analysis_export #(adder_packet) port_to_cov_cllctr;
     
     virtual function void build_phase(uvm_phase phase);
-        `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         fifo_port_from_agnts = new("fifo_port_from_agnts", this);
         port_to_cov_cllctr = new("port_to_cov_cllctr", this);
         
-        `uvm_info(get_type_name(), "Finished build_phase", UVM_FULL)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
     
     virtual task run_phase(uvm_phase phase);
-        `uvm_info(get_type_name(), "Started run_phase", UVM_MEDIUM)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_MEDIUM)
         
         packet_from_agnt = adder_packet::type_id::create("packet_from_agnt");
         forever
@@ -40,15 +40,15 @@ class adder_scoreboard extends uvm_scoreboard;
             ++total_evaluated_packets;
         end
         
-        `uvm_info(get_type_name(), "Finished run_phase", UVM_MEDIUM)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_MEDIUM)
     endtask
     
     virtual function void report_phase(uvm_phase phase);
-        `uvm_info(get_type_name(), "Started report_phase", UVM_LOW)
+        `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_LOW)
         
         `uvm_info(get_full_name(), $sformatf("Packets evaluated = %0d", total_evaluated_packets), UVM_LOW)
         `uvm_info(get_full_name(), $sformatf("Packets Mismatched = %0d", total_evaluated_packets - matched_packets), UVM_LOW)
         
-        `uvm_info(get_type_name(), "Finished report_phase", UVM_LOW)
+        `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_LOW)
     endfunction
 endclass
