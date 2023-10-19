@@ -8,10 +8,10 @@ class adder_virtual_sequencer extends uvm_sequencer;
     uvm_sequencer #(adder_packet) sqncr[];
     
     virtual function void build_phase(uvm_phase phase);
-        `uvm_info(get_type_name(), "Started build_phase", UVM_FULL)
+        `uvm_info(get_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         sqncr = new[adder_testbench_constants_pkg::dut_list.size()];
         
-        `uvm_info(get_type_name(), "Finished build_phase", UVM_FULL)
+        `uvm_info(get_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
 endclass
