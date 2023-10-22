@@ -7,8 +7,12 @@ class carry_propagation_sequence extends uvm_sequence;
     
     adder_packet packet_to_sequencer = adder_packet::type_id::create("packet_to_sequencer");
     
-    virtual task body();
+    virtual task pre_body();
+        packet_to_sequencer.cin.rand_mode(0);
         packet_to_sequencer.cin = 1;
+    endtask
+    
+    virtual task body();
         start_item(packet_to_sequencer);
         
         packet_to_sequencer.a = '1; packet_to_sequencer.b = 0;
