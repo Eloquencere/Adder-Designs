@@ -34,7 +34,7 @@ class adder_monitor extends uvm_monitor;
         `uvm_info(get_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_MEDIUM)
         
         packet_from_design = adder_packet::type_id::create("packet_from_design");
-        forever @(mntr_vintrf.a, mntr_vintrf.b, mntr_vintrf.cin, mntr_vintrf.sum, mntr_vintrf.cout)
+        forever @(mntr_vintrf.a or mntr_vintrf.b or mntr_vintrf.cin or mntr_vintrf.sum or mntr_vintrf.cout)
         begin
             packet_from_design.a = mntr_vintrf.a;
             packet_from_design.b = mntr_vintrf.b;
