@@ -15,5 +15,3 @@ cd ../scripts/
 @REM vlog -f "../components/top/verification_components_filelist.f" +VERBOSITY_LOW -R -sv_seed random -c -do "../scripts/run.do" -solvefaildebug=2
 @REM @echo off
 @REM cd ../scripts/
-
-@REM -sv_seed 3051038994
