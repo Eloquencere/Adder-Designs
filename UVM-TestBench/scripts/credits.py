@@ -4,7 +4,6 @@ from pyfiglet import figlet_format
 
 
 def display_countdown(text, seconds):
-    print(f"{text} in {seconds} seconds", end="", flush=True)
     for i in range(seconds, -1, -1):
         stdout.write("\r")
         stdout.write("\033[K")
