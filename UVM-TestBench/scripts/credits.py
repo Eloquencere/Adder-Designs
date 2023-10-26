@@ -19,3 +19,5 @@ print(
 , end = "\n\n")
 
 display_countdown("Initialising Verification Environment", 10)
+
+print(end="\n\n")
