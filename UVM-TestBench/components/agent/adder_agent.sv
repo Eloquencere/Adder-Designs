@@ -39,6 +39,6 @@ class adder_agent extends uvm_agent;
     function void write(adder_packet packet_from_mntr);
         packet_from_mntr.dut_name = agnt_cfg.dut_name;
         port_to_scrbrd.write(packet_from_mntr);
-        // packet_from_mntr.print()
+        // packet_from_mntr.print();
     endfunction
 endclass
