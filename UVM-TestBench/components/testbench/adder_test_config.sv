@@ -6,6 +6,7 @@ class adder_test_config extends uvm_object;
     function new(string name = "adder_test_config");
         super.new(name);
         srvr = new();
+        // Assign custom report server to global report server
         uvm_report_server::set_server(srvr);
     endfunction
 endclass
