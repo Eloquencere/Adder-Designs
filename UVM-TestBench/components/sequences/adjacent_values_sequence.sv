@@ -15,6 +15,7 @@ class adjacent_values_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
+            // Checking for adder rounding errors
             assert(packet_to_sequencer.randomize() with {(a-b) < proximity;})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
