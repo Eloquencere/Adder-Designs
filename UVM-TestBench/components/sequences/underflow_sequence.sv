@@ -15,6 +15,7 @@ class underflow_sequence extends uvm_sequence;
         begin
             start_item(packet_to_sequencer);
             
+            // Creating numbers close to the smallest representable values
             assert(packet_to_sequencer.randomize() with {(a < threshold) && (b < threshold);})
             else `uvm_fatal(get_name(), "Unable to randomize")
             
