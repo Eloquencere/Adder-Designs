@@ -7,7 +7,7 @@ class adder_environment extends uvm_env;
     
     adder_environment_config env_cfg;
     adder_virtual_sequencer vsqncr;
-    adder_agent agnt[$];
+    adder_agent agnt[$]; // Queue, for dynamic creation of an array of agents
     adder_agent_config agnt_cfg;
     adder_scoreboard scrbrd;
     adder_coverage_collector cov_cllctr;
@@ -20,6 +20,7 @@ class adder_environment extends uvm_env;
         
         vsqncr = adder_virtual_sequencer::type_id::create("vsqncr", this);
         
+        // Dynamic creation of agents & assignment of DUT name to agent config
         foreach(adder_testbench_constants_pkg::dut_list[i])
         begin
             agnt.push_back(adder_agent::type_id::create($sformatf("agnt[%0d]", i), this));
@@ -37,9 +38,12 @@ class adder_environment extends uvm_env;
     virtual function void connect_phase(uvm_phase phase);
         `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
+        
         foreach(agnt[i])
         begin
+            // Connecting the handle of the virtual sequencer to the agent's sequencer
             vsqncr.sqncr[i] = agnt[i].sqncr;
+            
             agnt[i].port_to_scrbrd.connect(scrbrd.fifo_port_from_agnts.analysis_export);
         end
         
