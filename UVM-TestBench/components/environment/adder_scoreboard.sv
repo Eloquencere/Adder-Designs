@@ -27,7 +27,11 @@ class adder_scoreboard extends uvm_scoreboard;
         forever
         begin
             fifo_port_from_agnts.get(packet_from_agnt);
+            
+            // Golden reference model
             expected_sum = packet_from_agnt.a + packet_from_agnt.b + packet_from_agnt.cin;
+            
+            // Printing the expected and obtained sum
             // `uvm_info(get_type_name(), $sformatf("Expected sum = 'h%x, obtained sum = 'h%x", expected_sum, {packet_from_agnt.cout, packet_from_agnt.sum}), UVM_NONE)
             if(expected_sum == {packet_from_agnt.cout, packet_from_agnt.sum})
             begin
@@ -36,7 +40,10 @@ class adder_scoreboard extends uvm_scoreboard;
                 ++matched_packets;
             end
             else
-                `uvm_info(get_type_name(), $sformatf("%s didn't respond as expected", packet_from_agnt.dut_name), UVM_LOW)
+                `uvm_info
+                (
+                    get_type_name(), $sformatf("%s %s to respond as expected", packet_from_agnt.dut_name, adder_colours_pkg::colourise(adder_colours_pkg::RED, "failed")), UVM_LOW
+                )
             ++total_evaluated_packets;
         end
         
