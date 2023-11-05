@@ -18,6 +18,7 @@ class adder_virtual_sequence extends uvm_sequence;
     random_no_constraint_sequence rand_sqnc = random_no_constraint_sequence::type_id::create("rand_sqnc");
     
     virtual task pre_body();
+        // Registering test cases(sequences) with the test case array
         test_case.push_back(basic_sqnc);
         test_case.push_back(sngl_sqnc);
         test_case.push_back(zro_sqnc);
@@ -34,7 +35,7 @@ class adder_virtual_sequence extends uvm_sequence;
             `uvm_info(get_type_name(), $sformatf("Started %s", test_case[i].get_type_name()), UVM_NONE)
             foreach(p_sequencer.sqncr[j])
             fork
-                int temp = j;
+                int temp = j; // converting a static variable to an automatic variable
                 start_sequence(temp, test_case[i].clone());
             join_none
             wait fork;
@@ -42,6 +43,7 @@ class adder_virtual_sequence extends uvm_sequence;
         end
     endtask
     
+    // Using this task to create a local instance of the sequence class for a particular sequencer
     task start_sequence(int sqncr_no, uvm_sequence sqnc);
         sqnc.start(p_sequencer.sqncr[sqncr_no]);
     endtask
