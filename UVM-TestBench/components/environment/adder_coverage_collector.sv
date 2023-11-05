@@ -3,6 +3,7 @@ class adder_coverage_collector extends uvm_subscriber#(adder_packet);
     
     adder_packet packet_from_scrbrd;
     
+    // Monitoring test case coverage
     covergroup set;
         coverpoint packet_from_scrbrd.a
         {
@@ -28,7 +29,7 @@ class adder_coverage_collector extends uvm_subscriber#(adder_packet);
     
     function new(string name = "adder_coverage_collector", uvm_component parent);
         super.new(name, parent);
-        set = new();
+        set = new(); // Creating an instance of the covergroup
     endfunction
     
     adder_environment_config env_cfg;
