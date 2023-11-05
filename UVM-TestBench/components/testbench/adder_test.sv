@@ -10,6 +10,7 @@ class adder_test extends uvm_test;
     adder_environment envrnmnt;
     adder_environment_config env_cfg;
     
+    // UVM phase to build environment component & create virtual sequence
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
@@ -26,7 +27,8 @@ class adder_test extends uvm_test;
         `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
     
-    virtual function void end_of_elaboration_phase(uvm_phase phase);
+    // UVM phase to print the testbench configurations
+    virtual function void end_of_elaboration_phase(uvm_phase phase); 
         `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
         
         uvm_top.print_topology();
@@ -35,6 +37,7 @@ class adder_test extends uvm_test;
         `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
     
+    // UVM phase to start the test
     virtual task run_phase(uvm_phase phase);
         phase.raise_objection(this);
         `uvm_info(get_type_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_MEDIUM)
