@@ -1,5 +1,7 @@
 package adder_colours_pkg;
     typedef enum {WHITE, BLUE, YELLOW, RED, GREEN} colour_t;
+    
+    // Assigning ANSI colour codes to each colour
     string fg_format[colour_t] = 
     '{
         WHITE : "\033[37m",
