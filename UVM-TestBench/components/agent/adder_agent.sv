@@ -37,8 +37,12 @@ class adder_agent extends uvm_agent;
     endfunction
     
     function void write(adder_packet packet_from_mntr);
+        
+        // Agent tagging packet to scoreboard with it's associated DUT name
         packet_from_mntr.dut_name = agnt_cfg.dut_name;
         port_to_scrbrd.write(packet_from_mntr);
+        
+        // Printing packet from monitor
         // packet_from_mntr.print();
     endfunction
 endclass
