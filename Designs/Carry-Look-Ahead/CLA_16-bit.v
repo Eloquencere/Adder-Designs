@@ -1,3 +1,21 @@
+module CLAxbit #(parameter size = 16)(A,B,cin,sum,cout);
+	input [size-1:0]A, B;
+	input cin;
+	output [size-1:0]sum;
+	output cout;
+
+	wire [size>>2:0]carry;
+	genvar i;
+    generate
+        assign carry[0]=cin;
+		for (i=0;i<size;i=i+4)
+		begin:Adder
+			CLA4bit1 ab (.A(A[i+:4]), .B(B[i+:4]),.cin(carry[i>>2]),.sum(sum[i+:4]),.cout(carry[(i>>2)+1]));
+		end
+        assign cout=carry[size>>2];
+	endgenerate
+endmodule
+
 module CLA4bit1(A,B,cin,sum,cout);
 	input [3:0]A, B;
     input cin;
@@ -20,22 +38,4 @@ module CLA4bit1(A,B,cin,sum,cout);
 	assign sum[2] = P[2] ^ ( G[1] | P[1]&G[0] | P[1]&P[0]&cin);
 	assign sum[3] = P[3] ^ ( G[2] | P[2]&G[1] | P[2]&P[1]&G[0] | P[2]&P[1]&P[0]&cin);
 
-endmodule
-
-module CLAxbit #(parameter size = 16)(A,B,cin,sum,cout);
-	input [size-1:0]A, B;
-	input cin;
-	output [size-1:0]sum;
-	output cout;
-
-	wire [size>>2:0]carry;
-	genvar i;
-    generate
-        assign carry[0]=cin;
-		for (i=0;i<size;i=i+4)
-		begin:Adder
-			CLA4bit1 ab (.A(A[i+:4]), .B(B[i+:4]),.cin(carry[i>>2]),.sum(sum[i+:4]),.cout(carry[(i>>2)+1]));
-		end
-        assign cout=carry[size>>2];
-	endgenerate
 endmodule
