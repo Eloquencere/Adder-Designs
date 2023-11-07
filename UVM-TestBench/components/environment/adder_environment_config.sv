@@ -5,5 +5,5 @@ class adder_environment_config extends uvm_object;
         super.new(name);
     endfunction
     
-    bit need_coverage = 0;
+    bit need_coverage;
 endclass
