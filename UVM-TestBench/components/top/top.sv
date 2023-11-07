@@ -35,6 +35,7 @@ module top;
             3: CSkAxbit DUT3(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));
             4: RCAxbit DUT4(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));
             5: MCCAxbit DUT5(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));
+            // Add more designs here
         endcase
         initial uvm_config_db#(virtual adder_interface)::set
         (
