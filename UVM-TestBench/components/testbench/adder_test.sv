@@ -22,6 +22,7 @@ class adder_test extends uvm_test;
         envrnmnt = adder_environment::type_id::create("envrnmnt", this);
         
         env_cfg = adder_environment_config::type_id::create("env_cfg");
+        env_cfg.need_coverage = 0;
         uvm_config_db#(adder_environment_config)::set(this, "envrnmnt.*", "env_cfg", env_cfg);
         
         `uvm_info(get_type_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
