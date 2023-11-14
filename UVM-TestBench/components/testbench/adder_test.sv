@@ -1,8 +1,13 @@
 class adder_test extends uvm_test;
     `uvm_component_utils(adder_test)
     
+    adder_report_server srvr;
+    
     function new(string name = "adder_test", uvm_component parent);
         super.new(name, parent);
+        srvr = new();
+        // Assign custom report server to global report server
+        uvm_report_server::set_server(srvr);
     endfunction
     
     adder_test_config tst_cfg;
