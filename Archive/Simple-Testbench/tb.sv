@@ -1,20 +1,24 @@
+interface AdderInterface();
+	logic [16]a, b;
+	logic cin;
+	logic [17]sum;
+endinterface
+
 program Testbench(a, b, cin, sum);
-  output bit[16]a, b;
+  	output bit [16]a, b;
 	output bit cin;
-  input logic[17]sum;		
-	
+  	input bit [17]sum;		
+
+	initial $monitor("Sum = %0x", sum);
 	initial
 	begin
-    $monitor("Sum = %0x", sum);
-		#2 a = 1; b = 1; cin = 0;
-    #10 $finish;
+		a = 1; b = 1; cin = 0;
+    		#10 $finish;
 	end
 endprogram
 
 module top;
-	wire [16]a, b;
-	wire cin;
-  wire [17]sum;
-  adder dut(.a, .b, .cin, .sum);
-  Testbench tb(.a, .b, .cin, .sum);
+	AdderInterface intrf();
+	adder dut(.a(intrf.a), .b(intrf.b), .cin(intrf.cin), .sum(intrf.sum));
+	Testbench tb(.a(intrf.a), .b(intrf.b), .cin(intrf.cin), .sum(intrf.sum));
 endmodule
