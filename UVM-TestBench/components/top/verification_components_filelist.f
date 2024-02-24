@@ -1,4 +1,4 @@
--f ../../designs/designs_under_test_filelist.f
+-f ../../Designs/designs_under_test_filelist.f
 
 ../components/interface/adder_interface.sv
 ../components/utilities/adder_colours_pkg.svh
