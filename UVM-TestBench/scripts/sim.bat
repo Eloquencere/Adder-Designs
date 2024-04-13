@@ -10,8 +10,10 @@ start log_file.txt
 cd ../scripts/
 
 
-@REM cd ../sim_data/
-@REM cls
-@REM vlog -f "../components/top/verification_components_filelist.f" +VERBOSITY_LOW -R -sv_seed random -c -do "../scripts/run.do" -solvefaildebug=2
+@REM Use these commands for when developing
+
 @REM @echo off
+@REM cls
+@REM cd ../sim_data/
+@REM vlog -f "../components/top/verification_components_filelist.f" +VERBOSITY_LOW -R -sv_seed random -c -do "../scripts/run.do" -solvefaildebug=2
 @REM cd ../scripts/
