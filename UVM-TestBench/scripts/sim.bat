@@ -10,7 +10,7 @@ start log_file.txt
 cd ../scripts/
 
 
-@REM Use these commands for when developing
+@REM Use these commands when developing
 
 @REM @echo off
 @REM cls
