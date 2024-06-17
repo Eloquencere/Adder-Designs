@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set +x
+set +x # Turning off command echo
 clear
 python3 credits.py
 cd ../sim_data/
@@ -9,12 +9,12 @@ vsim top -sv_seed random -logfile log_file.txt -voptargs=+acc=npr -coverage -vop
 vcover report -details -html code_coverage.ucdb
 brave covhtmlreport/index.html
 nvim log_file.txt
-cd ../scripts/
+cd -
 
-# Use these commands when developing
+# Use the following commands during development
 
 # set +x
 # clear
 # cd ../sim_data/
 # vlog -f "../components/top/verification_components_filelist.f" +VERBOSITY_LOW -R -sv_seed random -c -do "../scripts/run.do" -solvefaildebug=2
-# cd ../scripts/
+# cd -
