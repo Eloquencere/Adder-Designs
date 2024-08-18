@@ -26,7 +26,7 @@ module CLA4bit1(A,B,cin,sum,cout);
 	wire group_P,group_G;
     
     //PG generation
-    assign P = A^B;
+    	assign P = A^B;
 	assign G = A&B;
 	assign group_P = &P;
 	assign group_G = G[3] | P[3]&G[2] | P[3]&P[2]&G[1] | P[3]&P[2]&P[1]&G[0];
