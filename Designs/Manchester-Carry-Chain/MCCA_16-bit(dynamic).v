@@ -29,7 +29,7 @@ module AdderBlock1bit(sum,cout,a,b,cin);
     output sum,cout;
     input a,b,cin;
     wire p;
-carrygen1bit stat1(.cout(cout),.p(p),.a(a),.b(b),.cin(cin));
+CarryGen1bit stat1(.cout(cout),.p(p),.a(a),.b(b),.cin(cin));
 PFA1bit add1(.sum(sum),.p(p),.cin(cin));
 endmodule
 
