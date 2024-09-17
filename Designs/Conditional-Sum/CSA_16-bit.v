@@ -50,6 +50,8 @@ reg [15:0]a,b;
 reg cin;
 adderblock16bit uut(.sum(sum),.a(a),.b(b),.cin(cin));
 initial
+	$monitor("time -> %t, a -> %b, b -> %b, cin -> %b, sum -> %d", $time, a, b, cin, sum);
+initial
 begin
     a=0;b=0;cin=0;
     #10 cin=1;
