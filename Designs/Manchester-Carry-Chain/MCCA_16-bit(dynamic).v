@@ -7,7 +7,10 @@ module tb;
     wire cout;
     AdderBlock64bit dut(.sum(sum),.cout(cout),.a(a),.b(b),.cin(cin),.clk(clk));
     initial
-        $monitor("time -> %t, clk -> %d, a -> %b, b -> %b, cin -> %b, sum -> %b", $time, clk,a, b, cin, sum);
+        $monitor(
+            "time -> %t, clk -> %d, a -> %b, b -> %b, cin -> %b, sum -> %b",
+            $time, clk, a, b, cin, sum
+        );
     initial begin
         clk = {SIZE-1{1'b0}};
         forever #10 clk = ~clk;
