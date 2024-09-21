@@ -1,3 +1,37 @@
+module tb;
+    parameter integer SIZE = 16;
+
+    reg clk;
+    reg [SIZE-1:0] a, b;
+    reg cin;
+    wire [SIZE-1:0] sum;
+    wire cout;
+
+    MCCAxbit dut (
+        .a(a), .b(b), .cin(cin),
+        .sum(sum),
+        .cout(cout)
+    );
+
+    initial
+        $monitor(
+            "time -> %3t, a -> %b, b -> %b, cin -> %b, sum -> %b",
+            $time, a, b, cin, {cout,sum}
+        );
+
+    initial begin
+        a = 0; b = 0; cin = 0;
+        #5; cin = 1;
+        #5; a = 16'hCD; b = 16'hBD;
+        #5; cin = 0;
+        #5; a = 1; b = 0;
+        #5; cin = 1;
+        #5; a = 1; b = 1;
+        #5; cin = 0;
+        #20 $finish;
+    end
+endmodule
+
 module MCCAxbit(sum,cout,a,b,cin);
 parameter size = 16; //size >= 4;
     output [size-1:0]sum;
