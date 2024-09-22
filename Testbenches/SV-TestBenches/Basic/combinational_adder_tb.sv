@@ -15,19 +15,12 @@ program combi_adder_testbench #(
         );
     initial begin
         // single bit sequence
-        // a = 0; b = 0; cin = 0;
-        // #5; a = 0; b = 0; cin = 1;
-        // #5; a = 0; b = 1; cin = 0;
-        // #5; a = 0; b = 1; cin = 1;
-        // #5; a = 1; b = 0; cin = 0;
-        // #5; a = 1; b = 0; cin = 1;
-        // #5; a = 1; b = 1; cin = 0;
-        // #5; a = 1; b = 1; cin = 1;
-        for(a = 0; a <= 1; a++) begin
-            #5;
-            for(b = 0; b <= 1; b++) begin
-                #5;
-                for(cin = 0; cin <= 1; cin++) begin
+        for(int A = 0; A < 2; A++) begin
+            a = A;
+            for(int B = 0; B < 2; B++) begin
+                b = B;
+                for(int Cin = 0; Cin < 2; Cin++) begin
+                    cin = Cin;
                     #5;
                 end
             end
