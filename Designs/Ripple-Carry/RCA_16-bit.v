@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module RCAxbit(sum,cout,a,b,cin);
 parameter size=16; //size >= 4;
     output [size-1:0]sum;
