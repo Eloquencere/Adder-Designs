@@ -3,9 +3,9 @@
 interface adder_interface #(
     parameter int WIDTH = 8
 )();
-    logic [15:0]a, b;
+    logic [WIDTH-1:0]a, b;
     logic cin;
-    logic [15:0]sum;
+    logic [2:0]sum;
     logic cout;
 
     // Setting port directions for the testbench accessing interface signals

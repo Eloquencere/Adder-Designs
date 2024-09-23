@@ -5,7 +5,7 @@
 - [x] Ripple Carry Adder
 - [x] Carry Increment Adder
 - [x] Carry Skip Adder
-- [ ] Carry Save Adder
+- [x] Carry Save Adder
 - [x] Carry Select Adder
 - [x] Conditional Sum Adder
 - [x] Carry Look Ahead Adder
