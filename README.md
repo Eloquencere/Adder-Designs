@@ -1,7 +1,7 @@
 # Adder Topologies
 
 - [x] Manchester Carry Chain Adder
-- [ ] Transmission function Adder
+- [x] Transmission function Adder
 - [x] Ripple Carry Adder
 - [x] Carry Increment Adder
 - [x] Carry Skip Adder

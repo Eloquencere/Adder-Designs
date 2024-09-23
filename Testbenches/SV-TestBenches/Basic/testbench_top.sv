@@ -1,11 +1,11 @@
 module testbench_top;
-    parameter int WIDTH = 1;
+    parameter int WIDTH = 8;
 
     adder_interface #(
         .WIDTH(WIDTH)
     ) intrf ();
 
-    CSaA_xbit #(
+    TFA_xbit #(
         .WIDTH(WIDTH)
     ) dut (
         .a(intrf.a), .b(intrf.b),

@@ -13,9 +13,8 @@ module carrygen1bit (
 
     assign g = a & b;
     assign p = a ^ b;
-    assign ncin = ~cin;
 
-    nmos n1(ncin, ncout, p);
+    nmos n1(~cin, ncout, p);
     pmos p1(vdd, ncout, clk);
     nmos n2(ncout, common, g);
     nmos n3(common, gnd, clk);
