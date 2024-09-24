@@ -17,4 +17,4 @@
 - [ ] Han-Carlson Adder
 - [ ] Floating Point Adder
 - [ ] Pipelined Adder
-- [x] Make a SV testbench to test new adders
+- [x] Make a common SV testbench to test new adders
