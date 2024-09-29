@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 `define size 16 //size >= 4;
 
 module CIAxbit(sum,cout,a,b,cin);

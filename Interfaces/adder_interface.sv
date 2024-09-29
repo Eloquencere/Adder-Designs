@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 interface adder_interface #(
-    parameter int WIDTH = 8
+    parameter int WIDTH = 16
 )();
     logic [WIDTH-1:0]a, b;
     logic cin;
