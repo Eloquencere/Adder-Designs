@@ -1,7 +1,7 @@
 module mux2_1(y,i,s);
     output y;
     input[1:0] i;
-    input s;    
+    input s;
 bufif1 (y,i[1],s);
 bufif0 (y,i[0],s);
 endmodule
@@ -48,7 +48,7 @@ generate
         mux2_1 mu1 (.y(msum0[i]),.i({adsum1[i+3],adsum0[i+3]}),.s(adsum0[2]));
         mux2_1 mu2 (.y(msum1[i]),.i({adsum1[i+3],adsum0[i+3]}),.s(adsum1[2]));
     end
-endgenerate  
+endgenerate
 assign sum0={msum0,adsum0[0+:2]};
 assign sum1={msum1,adsum1[0+:2]};
 endmodule
@@ -58,7 +58,7 @@ module adderblock8bit(sum1,sum0,a,b);
     wire [4:0]msum1,msum0;
     wire [9:0]adsum1,adsum0;
     input [7:0]a,b;
-adderblock4bit ab8 [1:0](.sum1(adsum1),.sum0(adsum0),.a(a),.b(b));   
+adderblock4bit ab8 [1:0](.sum1(adsum1),.sum0(adsum0),.a(a),.b(b));
 genvar i;
 generate
     for(i=0;i<5;i=i+1)
@@ -78,7 +78,7 @@ module adderblock16bit(sum,a,b,cin);
     wire [17:0]adsum1,adsum0;
     input [15:0]a,b;
     input cin;
-adderblock8bit ab16 [1:0](.sum1(adsum1),.sum0(adsum0),.a(a),.b(b));   
+adderblock8bit ab16 [1:0](.sum1(adsum1),.sum0(adsum0),.a(a),.b(b));
 genvar i;
 generate
     for(i=0;i<9;i=i+1)
@@ -86,7 +86,7 @@ generate
         mux2_1 mu1 (.y(msum0[i]),.i({adsum1[i+9],adsum0[i+9]}),.s(adsum0[8]));
         mux2_1 mu2 (.y(msum1[i]),.i({adsum1[i+9],adsum0[i+9]}),.s(adsum1[8]));
     end
-endgenerate 
+endgenerate
 assign sum0={msum0,adsum0[0+:8]};
 assign sum1={msum1,adsum1[0+:8]};
 assign sum=cin?sum1:sum0;

@@ -28,7 +28,7 @@ INC_DIRS=(
     $PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/testbench
     $PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/report_server
 )
-separator="+"
-INC_DIRS=$(IFS="$separator"; echo "${INC_DIRS[*]}")
-echo "$INC_DIRS"
+# Converting array into command
+INC_DIRS=$(IFS="+"; echo "${INC_DIRS[*]}")
+echo "+incdir+$INC_DIRS"
 
