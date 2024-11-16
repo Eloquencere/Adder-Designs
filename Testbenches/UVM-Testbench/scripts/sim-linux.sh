@@ -28,7 +28,9 @@ INC_DIRS=(
     $PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/testbench
     $PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/report_server
 )
-# Converting array into command
-INC_DIRS=$(IFS="+"; echo "${INC_DIRS[*]}")
-echo "+incdir+$INC_DIRS"
+separator="+"
+INC_DIRS=$(IFS="$separator"; echo "${INC_DIRS[*]}")
+echo "$INC_DIRS"
+# # sample 
+# xrun -uvm +UVM_NO_RELNOTES -f $PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/verification_components_compilelist.f +incdir+$PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/sequences+$PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/agent+$PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/environment+$PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/testbench+$PROJECT_ROOT_DIR/Testbenches/UVM-Testbench/components/report_server
 

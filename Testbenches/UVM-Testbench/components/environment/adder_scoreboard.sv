@@ -26,7 +26,7 @@ class adder_scoreboard extends uvm_scoreboard;
         packet_from_agnt = adder_packet::type_id::create("packet_from_agnt");
         forever
         begin
-            fifo_port_from_agnts.get(packet_from_agnt); // change to packet_from_analysis_fifo
+            fifo_port_from_agnts.get(packet_from_agnt);
 
             // Golden reference model
             expected_sum = packet_from_agnt.a + packet_from_agnt.b + packet_from_agnt.cin;
