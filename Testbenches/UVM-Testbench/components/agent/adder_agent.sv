@@ -6,7 +6,7 @@ class adder_agent extends uvm_agent;
     endfunction
 
     adder_agent_config agnt_cfg;
-    uvm_sequencer#(adder_packet) sqncr;
+    uvm_sequencer #(adder_packet) sqncr;
     adder_driver drvr;
     adder_monitor mntr;
     uvm_analysis_imp #(adder_packet, adder_agent) port_from_mntr;

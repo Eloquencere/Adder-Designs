@@ -7,5 +7,4 @@ source proj/mentor_graphics/mentor_proj_init.sh
 
 mkdir -p $PROJECT_ROOT_DIR/sim_data
 
-
 # open a zellij session with the same name as the project

@@ -40,10 +40,11 @@ module top;
         endcase
         initial
             uvm_config_db#(virtual adder_interface #(16))::set(
-                uvm_root::get(),
-                $sformatf("uvm_test_top.envrnmnt.agnt[%0d].*", i),
-                $sformatf("%s_Interface", dut_list[i]), intrf
-            ); // (caller, path, identifier, value)
+                uvm_root::get(),                                    // caller
+                $sformatf("uvm_test_top.envrnmnt.agnt[%0d].*", i),  // path
+                $sformatf("%s_Interface", dut_list[i]),             // identifier
+                intrf                                               // value
+            );
     end
     /// Instintiation end ///
 

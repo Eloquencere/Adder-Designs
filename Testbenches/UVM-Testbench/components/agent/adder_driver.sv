@@ -13,16 +13,16 @@ class adder_driver extends uvm_driver#(adder_packet);
 
     virtual function void build_phase(uvm_phase phase);
         `uvm_info(get_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
-
+        
         assert(uvm_config_db#(adder_agent_config)::get(this, "drvr", "agnt_cfg", agnt_cfg))
         else `uvm_fatal(get_name(), "Failed to get agent config")
-
+        
         `uvm_info(get_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
 
     virtual function void connect_phase(uvm_phase phase);
         `uvm_info(get_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
-
+        
         assert(uvm_config_db#(virtual adder_interface)::get(this, "drvr", $sformatf("%s_Interface", agnt_cfg.dut_name), drvr_vintrf))
         else `uvm_fatal(get_name(), "Failed to get a handle to the interface")
 
@@ -32,13 +32,12 @@ class adder_driver extends uvm_driver#(adder_packet);
     virtual task run_phase(uvm_phase phase);
         `uvm_info(get_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_MEDIUM)
 
-        forever
-        begin
+        forever begin
             seq_item_port.get_next_item(packet_from_sequencer);
 
-            drvr_vintrf.a = packet_from_sequencer.a;
-            drvr_vintrf.b = packet_from_sequencer.b;
-            drvr_vintrf.cin = packet_from_sequencer.cin;
+            drvr_vintrf.a   <= packet_from_sequencer.a;
+            drvr_vintrf.b   <= packet_from_sequencer.b;
+            drvr_vintrf.cin <= packet_from_sequencer.cin;
 
             seq_item_port.item_done();
 

@@ -10,18 +10,18 @@ endmodule
 module CSaA_xbit #(
     parameter integer WIDTH = 2
 )(
-    input [WIDTH-1:0] x, y, z, // WIDTH-1:0 ideally
-    output [WIDTH:0] sum, // [WIDTH:0]sum -> ideally
+    input [WIDTH-1:0] x, y, z,
+    output [WIDTH:0] sum,
     output cout
 );
     wire [WIDTH:0] sum_i_upper;
     wire [WIDTH-1:0] carry_i_upper;
     wire [WIDTH:0] carry_i_lower;
 
-    // The very last, left-most adder expects the sum from the following adder
+    // The left-most (highest bit) lower adder expects a sum from the next upper adder
     // but, since it doesn't exist we are driving it with 0.
     assign sum_i_upper[WIDTH] = 1'b0;
-    // The very first carry in is 0.
+    // The very first carry-in is 0.
     assign carry_i_lower[0] = 1'b0;
 
     generate
