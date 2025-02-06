@@ -12,9 +12,8 @@ module adderblock1bit(sum1,sum0,a,b);
     wire w1,w2;
 xor (w1,a,b);
 and (w2,a,b);
-assign sum0={w2,w1};
-not (sum1[0],w1);
-or (sum1[1],w1,w2);
+assign sum0={w2   ,  w1};
+assign sum1={w2|w1, ~w1};
 endmodule
 
 module adderblock2bit(sum1,sum0,a,b);
@@ -91,3 +90,4 @@ assign sum0={msum0,adsum0[0+:8]};
 assign sum1={msum1,adsum1[0+:8]};
 assign sum=cin?sum1:sum0;
 endmodule
+

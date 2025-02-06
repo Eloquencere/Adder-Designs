@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+set -euo pipefail # this is experimental
+
 cd "$(dirname "${(%):-%x}")"
 
 cd ..

@@ -7,7 +7,7 @@ cd ../sim_data/
 vlog -f "../components/top/verification_components_filelist.f" +VERBOSITY_LOW -coveropt 3 +cover +acc
 vsim top -sv_seed random -logfile log_file.txt -voptargs=+acc=npr -coverage -vopt -c -do "../scripts/run.do" +UVM_NO_RELNOTES
 vcover report -details -html code_coverage.ucdb
-brave covhtmlreport/index.html
+xdg-open covhtmlreport/index.html
 nvim log_file.txt
 cd -
 

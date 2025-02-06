@@ -41,7 +41,7 @@ endmodule
 module CSaA_tb;
     parameter int WIDTH = 4;
 
-    reg [WIDTH-1:0] x, y, z;
+    reg  [WIDTH-1:0] x, y, z;
     wire [WIDTH:0]sum;
     wire cout;
 

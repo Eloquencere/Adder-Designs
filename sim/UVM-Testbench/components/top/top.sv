@@ -27,7 +27,7 @@ import adder_testbench_constants_pkg::dut_list;
 
 module top;
     /// Instintiation begin ///
-    for(genvar i = 0; i < 1; i++) begin // i <= $size(dut_list)
+    for(genvar i = 0; i < 6; i++) begin // i <= $size(dut_list)
         adder_interface #(16) intrf(); // Instantiating interface
         case(i) // Instantiating an Adder depending on the iteration value
             0: CIAxbit DUT0(.sum(intrf.sum), .cout(intrf.cout), .a(intrf.a), .b(intrf.b), .cin(intrf.cin));

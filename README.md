@@ -16,5 +16,5 @@
 - [ ] Brent-Kung Adder
 - [ ] Han-Carlson Adder
 - [ ] Floating Point Adder
-- [ ] Pipelined Adder
+- [ ] Vedic Adder
 - [x] Make a common SV testbench to test new adders

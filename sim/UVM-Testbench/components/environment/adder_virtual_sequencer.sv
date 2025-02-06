@@ -11,7 +11,7 @@ class adder_virtual_sequencer extends uvm_sequencer;
         `uvm_info(get_name(), $sformatf("Started %s_phase", phase.get_name()), UVM_FULL)
 
         // Creating a sequencer handle for every agent to be created
-        sqncr = new[adder_testbench_constants_pkg::dut_list.size()];
+        sqncr = new[$size(adder_testbench_constants_pkg::dut_list)];
 
         `uvm_info(get_name(), $sformatf("Finished %s_phase", phase.get_name()), UVM_FULL)
     endfunction
